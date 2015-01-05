@@ -9,4 +9,4 @@ Select the glyphs and run the script. It works for one master at a time.
 ###Note:
 An advanced and much better tool to perform this is RedArrows by Jens Kutilek (https://github.com/jenskutilek/RedArrow-Glyphs) but it only works on Glpyhs 2.
 
-    ![](screen-redcircles.png)
+![](screen-redcircles.png)
