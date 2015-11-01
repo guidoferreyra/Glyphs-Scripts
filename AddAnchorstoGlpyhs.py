@@ -15,6 +15,7 @@ from Foundation import NSPoint
 import math
 #Dictionary of anchors for each letter
 anchorDict = {
+#Minusculas
 "a":("bottom", "top", "grave", "acute", "ogonek"),
 "c":("bottom", "cedilla", "top", "acute"),
 "d":("bottom", "topRight", "top"),
@@ -36,6 +37,9 @@ anchorDict = {
 "y":("top", "grave", "acute"),
 "z":("acute", "bottom", "top"),
 "ae":("acute"),
+"s_t":( "bottomRight", "bottomLeft", "cedilla", "topRight",),
+"c_t":( "cedilla", "bottom", "topRight",),
+#Mayusculas
 "A":("bottom", "ogonek", "top", "grave", "acute"),
 "C":("bottom", "cedilla", "top", "acute"),
 "D":("top", "bottom"),
@@ -56,6 +60,7 @@ anchorDict = {
 "Y":("acute", "grave", "top"),
 "Z":("acute", "bottom", "top"),
 "AE":("acute"),
+#Versalitas
 "a.sc":("bottom", "ogonek", "top", "grave", "acute"),
 "c.sc":("bottom", "cedilla", "top", "acute"),
 "d.sc":("top", "bottom"),
@@ -168,6 +173,7 @@ def angle(angle, xHeight, yPos):
 # iterate through all layers of all selected glyphs:
 for thisGlyph in allSelectedGlyphs:
 	for thisLayer in thisGlyph.layers:
+		thisLayer.setAnchors_( None )
 		# determine the master to which the layer belongs:
 		masterID = thisLayer.associatedMasterId
 		thisMasterXheight = font.masters[masterID].xHeight
@@ -183,8 +189,8 @@ for thisGlyph in allSelectedGlyphs:
 			"ogonek":(thisLayer.bounds.size.width, 0),
 			"top":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
 			"topHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight+100),
-			"acuteHigh":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight),
-			"graveHigh":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight),
+			"acuteHigh":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight+100),
+			"graveHigh":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight+100),
 			"topRight":(thisLayer.bounds.size.width, thisMasterXheight),
 		}
 
@@ -197,6 +203,7 @@ for thisGlyph in allSelectedGlyphs:
 			for anchorName in anchorDict[thisGlyphName]:
 				if anchorName in allAnchorNames:
 					thisPositionXY = posDict[anchorName]
+
 				else:
 					thisPositionXY = (100, 200)
 
