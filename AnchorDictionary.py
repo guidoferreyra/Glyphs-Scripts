@@ -9,5 +9,5 @@ for thisLayer in Glyphs.font.selectedLayers:
     print '"'+thisLayer.parent.name+'"'+ ':(',
     for i in thisLayer.anchors:
         print '"'+i.name+'"'+',',
-    print ')'
+    print '),'
 print '}'
