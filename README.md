@@ -1,5 +1,22 @@
 Glyphs-Scripts
 ==============
+## AddAnchorstoGlpyhs.py
+Using a dictionary the script adds anchors to all the master of the selected glyphs.
+Feel free to edit the dictionary to match your scheme of anchors.
+For those glyphs that are not in the dictionary the script do nothing.
+There is also another dictionary with the position of the anchors.
+### How to use:
+Run on glyph edit window or select various glyphs and run.
+
+### Notes:
+This script is heavly based on Ohbendy's Place anchors in all masters script.
+https://github.com/ohbendy/Python-scripts-for-Glyphs
+
+Thanks to Mark Frömberg (mirque.de) for the angle function.
+
+#### AnchorDictionary.py
+Use this complementarty script to create a dictionary based on a previous font.
+Outputs to the console
 
 ## RedCircles.py
 
