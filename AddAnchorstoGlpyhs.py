@@ -13,9 +13,9 @@ There is also another dictionary with the position of the anchors.
 import GlyphsApp
 from Foundation import NSPoint
 import math
-#Dictionary of anchors for each letter
-anchorDict = {
-#Minusculas
+
+#Dictionary of anchors for Lowercase
+lowerDict = {
 "a":("bottom", "top", "grave", "acute", "ogonek"),
 "c":("bottom", "cedilla", "top", "acute"),
 "d":("bottom", "topRight", "top"),
@@ -39,7 +39,29 @@ anchorDict = {
 "ae":("acute"),
 "s_t":( "bottomRight", "bottomLeft", "cedilla", "topRight",),
 "c_t":( "cedilla", "bottom", "topRight",),
-#Mayusculas
+"acute":("_acuteHigh", "_acute"),
+"apostrophemod":("_topLeft"),
+"breve":("_top"),
+"breveinvertedcomb":("_top"),
+"caron":("_topHigh", "_top"),
+"caron.alt":("_topRight"),
+"cedilla":("_cedilla"),
+"circumflex":("_top"),
+"commaaccentcomb":("_bottom", "_bottomLeft", "_bottomRight"),
+"dblgravecomb":("_top"),
+"dieresis":("_top"),
+"dotaccent":("_top"),
+"dotbelowcomb":("_bottom"),
+"grave":("_graveHigh", "_grave"),
+"hungarumlaut":("_top"),
+"kreska":("_top"),
+"macron":("_topHigh", "_top"),
+"ogonek":("_ogonek"),
+"ring":("_top"),
+"tilde":("_top"),
+}
+#Dictionary of anchors for Uppercase
+upperDict = {
 "A":("bottom", "ogonek", "top", "grave", "acute"),
 "C":("bottom", "cedilla", "top", "acute"),
 "D":("top", "bottom"),
@@ -60,7 +82,28 @@ anchorDict = {
 "Y":("acute", "grave", "top"),
 "Z":("acute", "bottom", "top"),
 "AE":("acute"),
-#Versalitas
+"acute.case":("_acuteHigh", "_acute"),
+"breve.case":("_top"),
+"breveinvertedcomb.case":("_top"),
+"caron.case":("_topHigh", "_top"),
+"cedilla.case":("_cedilla"),
+"circumflex.case":("_top"),
+"commaaccentcomb.case":("_bottom"),
+"dblgravecomb.case":("_top"),
+"dieresis.case":("_top"),
+"dotaccent.case":("_top"),
+"dotbelowcomb.case":("_bottom"),
+"grave.case":("_graveHigh", "_grave"),
+"hungarumlaut.case":("_top"),
+"kreska.case":("_top"),
+"macron.case":("_topHigh", "_top"),
+"ogonek.case":("_ogonek"),
+"ring.case":("_top"),
+"tilde.case":("_top"),
+}
+
+#Dictionary of anchors for SmallCaps
+smallDict = {
 "a.sc":("bottom", "ogonek", "top", "grave", "acute"),
 "c.sc":("bottom", "cedilla", "top", "acute"),
 "d.sc":("top", "bottom"),
@@ -81,66 +124,37 @@ anchorDict = {
 "y.sc":("acute", "grave", "top"),
 "z.sc":("acute", "bottom", "top"),
 "ae.sc":("acute"),
-#Acentos
-"acute":("_acuteHigh", "_acute"),
-"acute.case":("_acuteHigh", "_acute"),
 "acute.sc":("_acuteHigh", "_acute"),
-"apostrophemod":("_topLeft"),
 "apostrophemod.sc":("_topLeft"),
-"breve":("_top"),
-"breve.case":("_top"),
 "breve.sc":("_top"),
-"breveinvertedcomb":("_top"),
-"breveinvertedcomb.case":("_top"),
 "breveinvertedcomb.sc":("_top"),
-"caron":("_topHigh", "_top"),
-"caron.alt":("_topRight"),
-"caron.case":("_topHigh", "_top"),
 "caron.sc":("_topHigh", "_top"),
-"cedilla":("_cedilla"),
-"cedilla.case":("_cedilla"),
 "cedilla.sc":("_cedilla"),
-"circumflex":("_top"),
-"circumflex.case":("_top"),
 "circumflex.sc":("_top"),
-"commaaccentcomb":("_bottom", "_bottomLeft", "_bottomRight"),
-"commaaccentcomb.case":("_bottom"),
 "commaaccentcomb.sc":("_bottom", "_bottomLeft", "_bottomRight"),
-"dblgravecomb":("_top"),
-"dblgravecomb.case":("_top"),
 "dblgravecomb.sc":("_top"),
-"dieresis":("_top"),
-"dieresis.case":("_top"),
 "dieresis.sc":("_top"),
-"dotaccent":("_top"),
-"dotaccent.case":("_top"),
 "dotaccent.sc":("_top"),
-"dotbelowcomb":("_bottom"),
-"dotbelowcomb.case":("_bottom"),
 "dotbelowcomb.sc":("_bottom"),
-"grave":("_graveHigh", "_grave"),
-"grave.case":("_graveHigh", "_grave"),
 "grave.sc":("_graveHigh", "_grave"),
-"hungarumlaut":("_top"),
-"hungarumlaut.case":("_top"),
 "hungarumlaut.sc":("_top"),
-"kreska":("_top"),
-"kreska.case":("_top"),
 "kreska.sc":("_top"),
-"macron":("_topHigh", "_top"),
-"macron.case":("_topHigh", "_top"),
 "macron.sc":("_topHigh", "_top"),
-"ogonek":("_ogonek"),
-"ogonek.case":("_ogonek"),
 "ogonek.sc":("_ogonek"),
-"ring":("_top"),
-"ring.case":("_top"),
 "ring.sc":("_top"),
-"tilde":("_top"),
-"tilde.case":("_top"),
 "tilde.sc":("_top"),
 }
 
+	
+
+def selectDict(glyphName, gDict, gPosDict, gLayer):
+    for anchorName in gDict[glyphName]:
+        if anchorName in gPosDict:
+            posXY = gPosDict[anchorName]
+        else:
+            posXY = (100, 200)
+        pos = NSPoint(posXY[0], posXY[1])
+        addAnchorToLayer(gLayer, anchorName, pos)
 
 def addAnchorToLayer( thisLayer, anchorName, thisPosition):
 	if thisLayer:
@@ -155,16 +169,18 @@ font = Glyphs.font
 layer = font.selectedLayers[0]
 glyph = layer.parent
 master = font.masters[0]
-
 allSelectedGlyphs = [l.parent for l in font.selectedLayers]
-allGlyphNames = anchorDict.keys() # master names listed in anchorDict
+lowerGlyphNames = lowerDict.keys() 
+upperGlyphNames = upperDict.keys()
+smallGlyphNames = smallDict.keys()
 
-def angle(angle, xHeight, yPos):
+
+def angle(angle, height, yPos):
 	'''
 	Italic Angle
 	'''
 	# Thank to Mark Frömberg for this
-	offset = math.tan(math.radians(angle)) * xHeight / 2
+	offset = math.tan(math.radians(angle)) * height / 2
 	shift = math.tan(math.radians(angle)) * yPos - offset
 	
 	return shift
@@ -177,11 +193,14 @@ for thisGlyph in allSelectedGlyphs:
 		# determine the master to which the layer belongs:
 		masterID = thisLayer.associatedMasterId
 		thisMasterXheight = font.masters[masterID].xHeight
+		thisMasterUpperheight = font.masters[masterID].capHeight
+		thisMasterSmallheight = float(font.masters[masterID].customParameters['smallCapHeight'])
 		thisMasterAngle = thisLayer.glyphMetrics()[5]
 
-		#Dictionary whith the anchor position. 
+
 		
-		posDict = {
+		#Dictionaries whith the anchors positions. 
+		lowerPosDict = {
 			"acute":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
 			"bottom":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterXheight, 0), 0),
 			"center":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight/2), thisMasterXheight/2),
@@ -192,20 +211,74 @@ for thisGlyph in allSelectedGlyphs:
 			"acuteHigh":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight+100),
 			"graveHigh":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight+100), thisMasterXheight+100),
 			"topRight":(thisLayer.bounds.size.width, thisMasterXheight),
+			"_acute":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_bottom":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterXheight, 0), 0),
+			"_center":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_grave":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_ogonek":(thisLayer.bounds.size.width, 0),
+			"_top":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_topHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_acuteHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_graveHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
+			"_topRight":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterXheight, thisMasterXheight), thisMasterXheight),
 		}
 
-		allAnchorNames = posDict.keys()
+		upperPosDict = {
+			"acute":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"bottom":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterUpperheight, 0), 0),
+			"center":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight/2), thisMasterUpperheight/2),
+			"grave":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"ogonek":(thisLayer.bounds.size.width, 0),
+			"top":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"topHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight+100), thisMasterUpperheight+100),
+			"acuteHigh":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight+100), thisMasterUpperheight+100),
+			"graveHigh":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight+100), thisMasterUpperheight+100),
+			"topRight":(thisLayer.bounds.size.width, thisMasterUpperheight),
+			"_acute":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_bottom":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterUpperheight, 0), 0),
+			"_center":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_grave":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_ogonek":(thisLayer.bounds.size.width, 0),
+			"_top":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_topHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_acuteHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_graveHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+			"_topRight":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterUpperheight, thisMasterUpperheight), thisMasterUpperheight),
+		}
+		smallPosDict = {
+			"acute":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"bottom":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterSmallheight, 0), 0),
+			"center":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight/2), thisMasterSmallheight/2),
+			"grave":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"ogonek":(thisLayer.bounds.size.width, 0),
+			"top":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"topHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight+100), thisMasterSmallheight+100),
+			"acuteHigh":(thisLayer.width/2 - 20+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight+100), thisMasterSmallheight+100),
+			"graveHigh":(thisLayer.width/2 + 20+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight+100), thisMasterSmallheight+100),
+			"topRight":(thisLayer.bounds.size.width, thisMasterSmallheight),
+			"_acute":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_bottom":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterSmallheight, 0), 0),
+			"_center":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_grave":(thisLayer.width/2+ angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_ogonek":(thisLayer.bounds.size.width, 0),
+			"_top":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_topHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_acuteHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_graveHigh":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+			"_topRight":(thisLayer.width/2 + angle(thisMasterAngle, thisMasterSmallheight, thisMasterSmallheight), thisMasterSmallheight),
+		}
 
 		# determine the master to which the layer belongs:
 		thisGlyphName = thisGlyph.name
 		# if it is listed in anchorDict, add the anchor at the given position:
-		if thisGlyphName in allGlyphNames:
-			for anchorName in anchorDict[thisGlyphName]:
-				if anchorName in allAnchorNames:
-					thisPositionXY = posDict[anchorName]
+		if thisGlyphName in lowerGlyphNames:
+ 		   selectDict(thisGlyphName, lowerDict, lowerPosDict, thisLayer)
 
-				else:
-					thisPositionXY = (100, 200)
+		elif thisGlyphName in upperGlyphNames:
+		    selectDict(thisGlyphName, upperDict, upperPosDict, thisLayer)
+		 
+		elif thisGlyphName in smallGlyphNames:
+		    selectDict(thisGlyphName, smallDict, smallPosDict, thisLayer)
 
-				thisPosition = NSPoint( thisPositionXY[0], thisPositionXY[1] )
-				addAnchorToLayer( thisLayer, anchorName, thisPosition)
+		else:
+		    print "the /" + thisGlyphName + " glyph is not in the dictionary"
