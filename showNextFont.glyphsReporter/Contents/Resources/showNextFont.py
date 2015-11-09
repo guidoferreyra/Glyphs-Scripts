@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-#This plugin is and adaptation of the ShowNextMaster plugin from Mark Froemberg (mirque.de)
+#This plugin is and adaptation of the ShowNextMaster plugin from Mark Froemberg (mirque.de).
 
 import objc
 from Foundation import *

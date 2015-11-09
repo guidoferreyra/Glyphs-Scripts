@@ -7,6 +7,7 @@ This plugin shows in a light orange colour the same glyph of another opened font
 Open two fonts and activate the plugin via **View>Show Next Font** menu item.
 ### Notes:
 The ammount of masters of the fonts should be the same, in case of difference the plugin shows the first master only.
+This plugin was inspired by the Show Next Master plugin from Mark Frömberg (mirque.de).
 
 ![](screen-nextfont.png)
 
