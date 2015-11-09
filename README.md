@@ -1,5 +1,15 @@
 Glyphs-Scripts
 ==============
+
+## showNextFont.glyphsReporter
+This plugin shows in a light orange colour the same glyph of another opened font. It could be useful for visual comparison of italics with normal styles,or different versions of the same font. 
+### How to use:
+Open two fonts and activate the plugin via **View>Show Next Font** menu item.
+### Notes:
+The ammount of masters of the fonts should be the same, in case of difference the plugin shows the first master only.
+
+![](screen-nextfont.png)
+
 ## AddAnchorstoGlpyhs.py
 Using a dictionary the script adds anchors to all the master of the selected glyphs.
 Feel free to edit the dictionary to match your scheme of anchors.
@@ -32,7 +42,7 @@ An advanced and much better tool to perform this is RedArrows by Jens Kutilek (h
 
 The script searches smooth nodes with disaligned handles and changes them to sharp. Maybe useful for auto–vectorized illustrations.
 
-###How to use:
+### How to use:
 Run on glyph edit window or select various glyphs and run.
 
 ![](screen-smooth2sharp.png)
