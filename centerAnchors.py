@@ -11,7 +11,6 @@ font = Glyphs.font
 allSelectedGlyphs = [l.parent for l in font.selectedLayers]
 print allSelectedGlyphs
 master = font.masters[0]
-glyph = thisLayer.parent
 
 
 def angle(angle, height, yPos):
