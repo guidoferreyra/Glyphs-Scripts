@@ -4,7 +4,7 @@ Glyphs-Scripts
 ## compareSets.py
 Compares glyph sets between two open fonts and allows to add missing glyph to the other font. 
 
-![](img/screen-compareSets.png)
+![](readme_imgs/screen-compareSets.png)
 
 ## centerAnchors.py
 This script center all anchors of all layers of selected glyphs.
@@ -35,7 +35,7 @@ Select the glyphs and run the script. It works for one master at a time.
 ###Note:
 An advanced and much better tool to perform this is RedArrows by Jens Kutilek (https://github.com/jenskutilek/RedArrow-Glyphs) but it only works on Glpyhs 2.
 
-![](screen-redcircles.png)
+![](readme_imgs/screen-redcircles.png)
 
 ## Smooth2Sharp.py
 
@@ -44,4 +44,4 @@ The script searches smooth nodes with disaligned handles and changes them to sha
 ### How to use:
 Run on glyph edit window or select various glyphs and run.
 
-![](screen-smooth2sharp.png)
+![](readme_imgs/screen-smooth2sharp.png)
