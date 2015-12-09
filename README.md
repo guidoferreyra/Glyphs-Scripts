@@ -4,7 +4,7 @@ Glyphs-Scripts
 ## compareSets.py
 Compares glyph sets between two open fonts and allows to add missing glyph to the other font. 
 
-![](readme_imgs/screen-compareSets.png)
+![](readme_imgs/screen-comparesets.png)
 
 ## centerAnchors.py
 This script center all anchors of all layers of selected glyphs.
