@@ -17,8 +17,7 @@ def insertArrow(layer, x, y, width=30):
 for layer in selectedLayers:
  	paths = layer.paths
 	
-	layer.setAnnotations_(None)
-	layer.parent.color = (NSNotFound)
+	
 	 	
  	for thisPath in paths:
  		nodos = thisPath.nodes
@@ -33,5 +32,9 @@ for layer in selectedLayers:
 				posy = thisNodo.position.y == offcurvenode.position.y
 
 				if posx and posy:
+					layer.setAnnotations_(None)
+					layer.parent.color = (NSNotFound)
 					insertArrow(layer, thisNodo.position.x, thisNodo.position.y)
-					layer.parent.color = 0
+					layer.parent.color = 1
+
+				
