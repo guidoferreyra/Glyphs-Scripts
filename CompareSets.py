@@ -24,15 +24,12 @@ class ListDemo(object):
 		DiffLists = (self.lista1, self.lista2)
 
 		#User interface elements
-		self.w = Window((330, 400),"Compare Sets", minSize=(330,400), maxSize=(330,1000))
-		self.w.textBox = TextBox((10, 10, 150, 55), "Missing on \n" + font1.familyName + "\n" + styleName1)
-		self.w.myList = List((10, 70, 150, -40), self.lista2)
-		self.w.button = Button((10, -30, 150, 20), "Add to font",
+		self.w = Window((220, 400),"Compare Sets", minSize=(330,400), maxSize=(330,1000))
+		self.w.textBox = TextBox((10, 10, 200, 55), "Missing on \n" + font1.familyName + " " + styleName1 + "\nvs. " + font2.familyName + " " + styleName2)
+		self.w.myList = List((10, 75, 200, -40), self.lista2)
+		self.w.button = Button((10, -30, 200, 20), "Add to font",
 							callback=self.button1Callback)
 					 
-		self.w.textBox2 = TextBox((170, 10, -10, 55), "Missing on \n" + font2.familyName + "\n" + styleName2)                     
-		self.w.myList2 = List((170, 70, 150, -40), self.lista1)
-		self.w.button2 = Button((170, -30, 150, 20), "Add to font",callback=self.button2Callback1)          
 		self.w.open()
 
 	#Button Callbacks
@@ -52,23 +49,6 @@ class ListDemo(object):
 		for ii in trash:
 			self.w.myList.remove(ii)	
 			
-
-
-	def button2Callback1(self, sender):
-		seleccion = self.w.myList.getSelection()
-		trash = []
-		# Iterate over the selection, add glyph to font and append to trash list.
-		for i in seleccion:
-			name = self.w.myList2.__getitem__(i)
-			font2.glyphs.append(GSGlyph(name))
-			trash.append(name)
-			#Add automatic components to the created glyph.
-			for master in font2.masters:
-				layer = font2.glyphs[name].layers[master.id]
-				layer.makeComponents()
-		#Iterates over the trash list and remove the element from the UI list.
-		for ii in trash:
-			self.w.myList.remove(ii)
 	
 	def createLists(self):
 		# Create lists with the name of the glyphs of each font
