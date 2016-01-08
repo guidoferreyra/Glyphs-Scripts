@@ -1,47 +1,72 @@
 Glyphs-Scripts
 ==============
+Python scripts for the font editor Glyphs App.
+Please feel free to report bugs and send suggestions.
 
-## compareSets.py
-Compares glyph sets between two open fonts and allows to add missing glyph to the other font. 
-
-![](readme_imgs/screen-comparesets.jpg)
-
-## centerAnchors.py
-This script center all anchors of all layers of selected glyphs.
-
-## AddAnchorstoGlpyhs.py
-Using a dictionary the script adds anchors to all the master of the selected glyphs.
+#### addAnchorstoGlpyhs.py
+Using prebuilt dictionary the script adds anchors to all the master of the selected glyphs.
 Feel free to edit the dictionary to match your scheme of anchors.
 For those glyphs that are not in the dictionary the script do nothing.
-There is also another dictionary with the position of the anchors.
-### How to use:
-Run on glyph edit window or select various glyphs and run.
+The position of the anchors are estimated, inside the script there is another dictionary with the position of the anchors.
 
-### Notes:
-This script is heavly based on Ohbendy's Place anchors in all masters script.
-https://github.com/ohbendy/Python-scripts-for-Glyphs
+—Thanks to Mark Frömberg (mirque.de) for the angle function.
 
-Thanks to Mark Frömberg (mirque.de) for the angle function.
+---
 
-#### AnchorDictionary.py
+#### anchorDictionary.py
 Use this complementarty script to create a dictionary based on a previous font.
-Outputs to the console
+Outputs to the console.
 
-## RedCircles.py
+---
 
-This script searches for control points that are overlapping nodes and marks them with an annotation circle, setting also glyph's color to red.
-###How to use:
-Select the glyphs and run the script. It works for one master at a time.
-###Note:
-An advanced and much better tool to perform this is RedArrows by Jens Kutilek (https://github.com/jenskutilek/RedArrow-Glyphs) but it only works on Glpyhs 2.
+#### centerAnchors.py
+Center all anchors of all layers of selected glyphs.
 
-![](readme_imgs/screen-redcircles.png)
+---
 
-## Smooth2Sharp.py
+#### compareSets.py
+Compares glyph sets between two open fonts and allows to add missing glyph to the other font. (UI)
 
-The script searches smooth nodes with disaligned handles and changes them to sharp. Maybe useful for auto–vectorized illustrations.
+<!-- ![](readme_imgs/screen-comparesets.jpg)-->
 
-### How to use:
-Run on glyph edit window or select various glyphs and run.
+---
 
-![](readme_imgs/screen-smooth2sharp.png)
+#### copyAnchorsToBackground.py
+Copy the anchors and paste it on the background of the layer.
+
+---
+
+#### copyAnchorsToFront.py
+Copy the anchors from the background and paste it on the foreground.
+
+---
+
+#### moreThanTwoComponents.py
+
+Based on a selection opens in a newtab the glyphs that uses more than two components. 
+
+---
+
+#### RedCircles.py
+
+This script searches for control points that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
+
+---
+
+#### reportAnchorsnOffMetrics.py
+
+Prints to the console a list with the anchors off the metrics of the selected glyphs.
+_This script is a modification of a mekkablue's script._
+
+---
+
+#### reportGlyphAnchors.py
+
+Prints to the console the anchors used on selected Glyphs. 
+
+---
+
+#### Smooth2Sharp.py
+
+The script searches smooth nodes with disaligned handles and changes them to sharp. Maybe useful for auto traced illustrations.
+
