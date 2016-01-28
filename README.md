@@ -13,6 +13,11 @@ The position of the anchors are estimated, inside the script there is another di
 
 ---
 
+#### anchorBackupAndClone.py
+(UI) Backup anchors or copy to another layer.
+
+---
+
 #### anchorDictionary.py
 Use this complementarty script to create a dictionary based on a previous font.
 Outputs to the console.
@@ -31,23 +36,13 @@ Compares glyph sets between two open fonts and allows to add missing glyph to th
 
 ---
 
-#### copyAnchorsToBackground.py
-Copy the anchors and paste it on the background of the layer.
-
----
-
-#### copyAnchorsToFront.py
-Copy the anchors from the background and paste it on the foreground.
-
----
-
 #### moreThanTwoComponents.py
 
 Based on a selection opens in a newtab the glyphs that uses more than two components. 
 
 ---
 
-#### RedCircles.py
+#### redCircles.py
 
 This script searches for control points that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
 
@@ -66,7 +61,7 @@ Prints to the console the anchors used on selected Glyphs.
 
 ---
 
-#### Smooth2Sharp.py
+#### smooth2Sharp.py
 
 The script searches smooth nodes with disaligned handles and changes them to sharp. Maybe useful for auto traced illustrations.
 
