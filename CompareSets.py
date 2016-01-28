@@ -24,10 +24,10 @@ class ListDemo(object):
 		DiffLists = (self.lista1, self.lista2)
 
 		#User interface elements
-		self.w = Window((220, 400),"Compare Sets", minSize=(330,400), maxSize=(330,1000))
-		self.w.textBox = TextBox((10, 10, 200, 55), "Missing on \n" + font1.familyName + " " + styleName1 + "\nvs. " + font2.familyName + " " + styleName2)
-		self.w.myList = List((10, 75, 200, -40), self.lista2)
-		self.w.button = Button((10, -30, 200, 20), "Add to font",
+		self.w = Window((220, 400),"Compare Sets", minSize=(220,400), maxSize=(330,1000))
+		self.w.textBox = TextBox((10, 10, -10, 55), "Missing on \n" + font1.familyName + " " + styleName1 + "\nvs. " + font2.familyName + " " + styleName2)
+		self.w.myList = List((10, 75, -10, -40), self.lista2)
+		self.w.button = Button((10, -30, -10, 20), "Add to font",
 							callback=self.button1Callback)
 					 
 		self.w.open()
