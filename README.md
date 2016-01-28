@@ -16,6 +16,9 @@ The position of the anchors are estimated, inside the script there is another di
 #### anchorBackupAndClone.py
 (UI) Backup anchors or copy to another layer.
 
+![](readme_imgs/screen-backupClone.png)
+
+
 ---
 
 #### anchorDictionary.py
@@ -30,9 +33,9 @@ Center all anchors of all layers of selected glyphs.
 ---
 
 #### compareSets.py
-Compares glyph sets between two open fonts and allows to add missing glyph to the other font. (UI)
+(UI) Compares glyph sets between two open fonts and allows to add missing glyph to the other font.
 
-<!-- ![](readme_imgs/screen-comparesets.jpg)-->
+![](readme_imgs/screen-comparesets.png)
 
 ---
 
