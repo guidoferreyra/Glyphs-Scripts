@@ -116,8 +116,5 @@ class AnchorTeleporter(object):
 				y = thisAnchor.position.y
 	
 				copyToFront (thisLayer, anchorName, x, y)
-			
 
-Glyphs.clearLog()
-Glyphs.showMacroWindow()
 AnchorTeleporter()
