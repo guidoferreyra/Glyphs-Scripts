@@ -14,6 +14,7 @@ class nearAlignment(object):
 		
 		umbral = 0
 		infoText = "Threshold: " + str(umbral)
+		self.w = Window((180, 70), "Check Nodes")
 		self.w.slider = Slider((10, 10, -10, 23),
                             tickMarkCount=10,
                             value=0,
