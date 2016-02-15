@@ -1,7 +1,7 @@
 #MenuTitle: Nodes near Alignment zones
 # -*- coding: utf-8 -*-
 __doc__="""
-Opens a new tab with all glyphs where the extremums do not lie within zones.
+(UI) The script searches for nodes near the alignment zones using an slider as a threshold in units.
 """
 from vanilla import *
 font = Glyphs.font
@@ -13,7 +13,7 @@ class nearAlignment(object):
 	def __init__(self):
 		
 		umbral = 0
-		infoText = "Threshold: " + str(umbral)
+		infoText = "Threshold: "+ str(umbral) + " upm"
 		self.w = Window((180, 70), "Check Nodes")
 		self.w.slider = Slider((10, 10, -10, 23),
                             tickMarkCount=10,
@@ -26,7 +26,7 @@ class nearAlignment(object):
 	def sliderCallback(self, sender):
 
 		umbral = int(self.w.slider.get())
-		self.w.textBox.set("Threshold: " + str(umbral))
+		self.w.textBox.set("Threshold: " + str(umbral) + " upm")
 		print umbral
 		def insertArrow(thisLayer, posX, posY, width=30):
 			arrow = GSAnnotation.alloc().initWithElementDict_({ "position":"{"+str(posX)+", "+str(posY)+"}", "type":"Circle", "width":width })
