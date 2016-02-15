@@ -45,6 +45,14 @@ Based on a selection opens in a newtab the glyphs that uses more than two compon
 
 ---
 
+#### nodesNearAlignmentZones.py
+
+Based on a selection opens in a newtab the glyphs that uses more than two components. 
+
+![](readme_imgs/screen-nodesNearAlignmentZones.png)
+
+---
+
 #### redCircles.py
 
 This script searches for control points that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
@@ -61,6 +69,14 @@ _This script is a modification of a mekkablue's script._
 #### reportGlyphAnchors.py
 
 Prints to the console the anchors used on selected Glyphs. 
+
+---
+
+#### slantAnchors.py
+
+(UI) Moves anchors according to master italic angle. Useful when importing anchors from roman versions, or after changing the font angle.
+
+![](readme_imgs/screen-slantAnchors.png)
 
 ---
 

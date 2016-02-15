@@ -1,7 +1,7 @@
 	#MenuTitle: Slant Anchors
 # -*- coding: utf-8 -*-
 __doc__="""
-Displace anchors according to master italic angle
+(UI) Moves anchors according to master italic angle. Useful when importing anchors from roman versions, or after changing the font angle.
 """
 
 import GlyphsApp
