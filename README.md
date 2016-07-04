@@ -39,6 +39,19 @@ Center all anchors of all layers of selected glyphs.
 
 ---
 
+#### copyAnchorsFromBase.py
+On a suffixed glyph run the script to copy the anchors from the default version. (i.e. run on /a.ss01 and get /a anchors).
+
+---
+
+#### createOTClass.py
+(UI) Create an Opentype Class with glyphs containing an specified text.
+This script uses code from Mekkablue's "Make OT class from selected glyphs".
+
+![](readme_imgs/screen-createotclass.png)
+
+---
+
 #### moreThanTwoComponents.py
 
 Based on a selection opens in a newtab the glyphs that uses more than two components. 
