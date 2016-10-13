@@ -14,7 +14,7 @@ The position of the anchors are estimated, inside the script there is another di
 ---
 
 #### anchorBackupAndClone.py
-(UI) Backup anchors or copy to another layer.
+(UI) Backup anchors to a secondary layer and allows to copy them to another layer.
 
 ![](readme_imgs/screen-backupClone.png)
 
@@ -46,7 +46,7 @@ On a suffixed glyph run the script to copy the anchors from the default version.
 
 #### createOTClass.py
 (UI) Create an Opentype Class with glyphs containing an specified text.
-This script uses code from Mekkablue's "Make OT class from selected glyphs".
+—This script uses code from Mekkablue's "Make OT class from selected glyphs".
 
 ![](readme_imgs/screen-createotclass.png)
 
@@ -54,13 +54,13 @@ This script uses code from Mekkablue's "Make OT class from selected glyphs".
 
 #### moreThanTwoComponents.py
 
-Based on a selection opens in a newtab the glyphs that uses more than two components. 
+Based on selected glyphs, opens in a new tab the glyphs that uses more than two components. 
 
 ---
 
 #### nodesNearAlignmentZones.py
 
-Based on a selection opens in a newtab the glyphs that uses more than two components. 
+(UI) Based on a upm “threshold” slider, adds circle annotation to nodes that are close to alignment zones. Useful for misplaced nodes that affects hinting.
 
 ![](readme_imgs/screen-nodesNearAlignmentZones.png)
 
@@ -68,7 +68,7 @@ Based on a selection opens in a newtab the glyphs that uses more than two compon
 
 #### redCircles.py
 
-This script searches for control points that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
+Searches for handles that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
 
 ---
 
