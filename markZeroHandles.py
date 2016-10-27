@@ -1,4 +1,4 @@
-#MenuTitle: RedCircles
+#MenuTitle: Mark Zero Handles
 # -*- coding: utf-8 -*-
 __doc__="""
 This script searches for control points that are overlapping nodes and marks them with an annotation circle, setting also glyph's color to red.
