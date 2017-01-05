@@ -9,9 +9,6 @@ import math
 
 font = Glyphs.font
 allSelectedGlyphs = [l.parent for l in font.selectedLayers]
-print allSelectedGlyphs
-master = font.masters[0]
-
 
 def angle(angle, height, yPos):
     offset = math.tan(math.radians(angle)) * height / 2
@@ -33,4 +30,4 @@ for thisGlyph in allSelectedGlyphs:
             posY = thisLayer.anchors[thisAnchor.name].position.y
             centerOfLayer = width/2 + angle(thisMasterAngle, thisMasterXheight, posY)
 
-            thisLayer.anchors[thisAnchor.name].position = NSPoint(centerOfLayer, posY)  
+            thisLayer.anchors[thisAnchor.name].position = NSPoint(centerOfLayer, posY) 
