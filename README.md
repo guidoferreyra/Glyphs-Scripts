@@ -13,6 +13,11 @@ The position of the anchors are estimated, inside the script there is another di
 
 ---
 
+#### addNamesToStylisticSets.py
+Based on a given list adds descriptive names to stylistic sets. (You have to edit the list inside the script)
+
+---
+
 #### anchorBackupAndClone.py
 (UI) Backup anchors to a secondary layer and allows to copy them to another layer.
 
@@ -49,6 +54,14 @@ On a suffixed glyph run the script to copy the anchors from the default version.
 —This script uses code from Mekkablue's "Make OT class from selected glyphs".
 
 ![](readme_imgs/screen-createotclass.png)
+
+---
+
+#### importAnchors.py
+(UI) Import anchors from antother font or another layer of the same font.
+
+![](readme_imgs/screen-importAnchors.png)
+
 
 ---
 
