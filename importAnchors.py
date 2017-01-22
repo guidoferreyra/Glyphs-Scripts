@@ -57,7 +57,7 @@ class AnchorTeleporter(object):
 
 	def cloneCallback(self, sender):
 		selectedLayers = Glyphs.font.selectedLayers
-		self.w.box.infoBox.set("Anchors Copyed!")
+		self.w.box.infoBox.set("Anchors Copied!")
 		
 		def copyToFront( thisLayer, anchorName, x, y):
 			newAnchor = GSAnchor.alloc().init()
