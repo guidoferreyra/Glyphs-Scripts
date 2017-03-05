@@ -3,6 +3,7 @@ Glyphs-Scripts
 Python scripts for the font editor Glyphs App.
 Please feel free to report bugs and send suggestions.
 
+
 #### addAnchorstoGlpyhs.py
 Using prebuilt dictionary the script adds anchors to all the master of the selected glyphs.
 Feel free to edit the dictionary to match your scheme of anchors.
@@ -68,6 +69,14 @@ On a suffixed glyph run the script to copy the anchors from the default version.
 #### moreThanTwoComponents.py
 
 Based on selected glyphs, opens in a new tab the glyphs that uses more than two components. 
+
+---
+
+#### newTabModifiedGlyphs.py
+(UI) Opens in a new tab modified glyphs after or before certain date.
+
+![](readme_imgs/screen-newTabModifiedGlpyhs.png)
+
 
 ---
 
