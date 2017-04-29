@@ -11,6 +11,8 @@ layers = font.selectedLayers
 listOfGlyphs = []
 
 Glyphs.clearLog()
+Glyphs.showMacroWindow()
+
 
 diacriticsDict = {
 "a":("acute", "breve", "circumflex", "dieresis", "grave", "macron", "ogonek", "ring", "tilde"),

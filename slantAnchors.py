@@ -17,7 +17,7 @@ class slantAnchor(object):
 
     def __init__(self):
         
-        self.w = Window((160, 100), "Check Nodes")
+        self.w = Window((160, 100), "Slant anchors")
         self.w.textBox = EditText((10, 10, 60, 20), "")
         self.w.EditText = TextBox((80, 10, 90, 20), u"\u00B0")
         self.w.checkBox = CheckBox((10, 40, -10, 20), "Use italic angle",

@@ -16,7 +16,7 @@ class AnchorTeleporter(object):
 
 	def __init__(self):
 		infoText = ""
-		self.w = Window((240, 190), "Import Anchors")
+		self.w = FloatingWindow((240, 190), "Import Anchors")
 		self.w.textBox = TextBox((10, 10, -10, 17), "Import Anchors from")
 		self.w.popUpFont = PopUpButton((10, 35, -10, 20),
 							  self.createFontList(),
@@ -71,10 +71,14 @@ class AnchorTeleporter(object):
 			layerIndex = self.w.popUpButton.get()
 			popchoose = self.w.popUpButton.getItems()
 			
+			
 			try:
+			
 				for i in Glyphs.fonts[1].glyphs[glyph.name].layers:
-					if i.name == popchoose [layerIndex]:
+			
+					if i.name == list(popchoose) [layerIndex]:
 						backupLayer = i
+						break
 
 				allAnchors = backupLayer.anchors
 				

@@ -1,7 +1,7 @@
 #MenuTitle: deleteNotes
 # -*- coding: utf-8 -*-
 __doc__="""
-This Script delete notes
+This Script delete notes in selected glyphs
 """
 
 Font = Glyphs.font

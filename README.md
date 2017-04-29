@@ -14,6 +14,13 @@ The position of the anchors are estimated, inside the script there is another di
 
 ---
 
+#### addGuidelineName.py
+(UI) Allows to add name to guideline (¿hidden feature in Glyphs?)
+
+![](readme_imgs/screen-addGuidelineName.png)
+
+---
+
 #### addNamesToStylisticSets.py
 Based on a given list adds descriptive names to stylistic sets. (You have to edit the list inside the script)
 
@@ -33,8 +40,30 @@ Outputs to the console.
 
 ---
 
+#### automaticOTclasses.py
+
+Create and update Opentype classes based on information (name of class and text in glpyh name) stored in the custom parameter "otFeatureClass".
+Useful for update continuously growing classes during the development. Also,  can create OT class based on another class finding and replacing a value.
+
+Examples of custom parameters:
+
+Property: `otClass`
+Value: `new_class_name;text_in_glyphname;`
+Example: Using `ss01;alt1;` as value will create a class named "ss01" containing all glyphs with the text "alt1" in its name.
+
+Property: `otClassCopyEdit`
+Value: `new_class_name;base_class_name;find_text;replace_text;`
+Example: Using `ss02;ss01;alt1;alt2;` will findcreate a class named "ss02" based on "ss01" class replacing the text "alt1" for "alt2".
+
+---
+
 #### centerAnchors.py
 Center all anchors of all layers of selected glyphs.
+
+---
+
+#### closeAllTabs.py
+Close all open tabs in the document.
 
 ---
 
@@ -50,6 +79,12 @@ On a suffixed glyph run the script to copy the anchors from the default version.
 
 ---
 
+#### createAccentedVersions.py
+
+Based on a dictionary stored inside the script outputs to the console the accented versions of the selected glyph. Useful for create accented versions of suffixed glyphs (i.e. run on /a.ss01 and get aacute.ss01, abreve.ss01...). Edit the dictionary to match your set.
+
+---
+
 #### createOTClass.py
 (UI) Create an Opentype Class with glyphs containing an specified text.
 —This script uses code from Mekkablue's "Make OT class from selected glyphs".
@@ -58,17 +93,25 @@ On a suffixed glyph run the script to copy the anchors from the default version.
 
 ---
 
+#### deleteNotes.py
+Delete annotations in selected glyphs
+
+---
+
 #### importAnchors.py
 (UI) Import anchors from antother font or another layer of the same font.
 
 ![](readme_imgs/screen-importAnchors.png)
 
+---
+
+#### insertImagesToBackground.py
+In the dialog box select images to insert as background. Images must be named with the corresponding glyphname (ie. a.jpg) in case the glyph is not in the font the script will create it.
 
 ---
 
-#### moreThanTwoComponents.py
-
-Based on selected glyphs, opens in a new tab the glyphs that uses more than two components. 
+#### markZeroHandles.py
+Searches for handles that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
 
 ---
 
@@ -77,6 +120,20 @@ Based on selected glyphs, opens in a new tab the glyphs that uses more than two 
 
 ![](readme_imgs/screen-newTabModifiedGlpyhs.png)
 
+---
+
+#### newTabMoreThanXComponents.py
+(UI) Based on selected glyphs, opens in a new tab the glyphs with more than the indicated ammout of components.
+
+![](readme_imgs/screen-newTabMoreThanXComponents.png)
+
+
+---
+
+#### newTabWithNotMonoGlyphs.py
+(UI) Opens a newtab with those glyphs that doesn’t match with the indicated glyph width. Useful for checking monospaced fonts or tabular glyphs.
+
+![](readme_imgs/screen-newTabWithNotMonoGlyphs.png)
 
 ---
 
@@ -85,12 +142,6 @@ Based on selected glyphs, opens in a new tab the glyphs that uses more than two 
 (UI) Based on a upm “threshold” slider, adds circle annotation to nodes that are close to alignment zones. Useful for misplaced nodes that affects hinting.
 
 ![](readme_imgs/screen-nodesNearAlignmentZones.png)
-
----
-
-#### redCircles.py
-
-Searches for handles that are overlapping nodes and marks them with an annotation circle, setting also the layer label color to orange.
 
 ---
 
