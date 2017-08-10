@@ -98,6 +98,11 @@ Delete annotations in selected glyphs
 
 ---
 
+#### getComponentAnchors.py
+In a glyph made of components, gets component acnhors and add it to the current layer, useful for ligatures.
+
+---
+
 #### importAnchors.py
 (UI) Import anchors from antother font or another layer of the same font.
 
