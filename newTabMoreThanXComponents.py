@@ -5,6 +5,7 @@ __doc__="""
 """
 
 import GlyphsApp
+from vanilla import *
 
 
 thisFont = Glyphs.font
