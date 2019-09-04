@@ -194,7 +194,10 @@ for thisGlyph in allSelectedGlyphs:
 		masterID = thisLayer.associatedMasterId
 		thisMasterXheight = font.masters[masterID].xHeight
 		thisMasterUpperheight = font.masters[masterID].capHeight
-		thisMasterSmallheight = float(font.masters[masterID].customParameters['smallCapHeight'])
+		if font.masters[masterID].customParameters['smallCapHeight']:
+		    thisMasterSmallheight = float(font.masters[masterID].customParameters['smallCapHeight'])
+		else:
+		    thisMasterSmallheight = thisMasterXheight	
 		thisMasterAngle = thisLayer.glyphMetrics()[5]
 
 
