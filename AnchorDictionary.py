@@ -2,12 +2,15 @@
 # -*- coding: utf-8 -*-
 __doc__="""
 Creates a python dictionary with the name of the anchors used on the selected glyphs.
-Output to the console
+Outputs to the console
 """
-print 'anchorDict = {'
+output = 'anchorDict = {\n'
 for thisLayer in Glyphs.font.selectedLayers:
-    print '"'+thisLayer.parent.name+'"'+ ':(',
+    output += '\t"'+thisLayer.parent.name+'"'+':('
     for i in thisLayer.anchors:
-        print '"'+i.name+'"'+',',
-    print '),'
-print '}'
+        output += '"'+i.name+'"'+','
+    output += '),\n'
+output += '}'
+
+Glyphs.showMacroWindow()
+print (output)

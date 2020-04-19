@@ -10,26 +10,41 @@ font = Glyphs.font
 selectedLayers = font.selectedLayers
 
 def checkAnchors (thisLayer):
+	
+	try:
+		# Glyphs 3
+		metricsPosition = []
+		for metric in thisLayer.metrics():
+			metricsPosition.append(metric.position())
+	except:
+		# Glyphs 2
+		thisMaster = thisLayer.associatedFontMaster()
+		metricsPosition = [0.0, thisMaster.xHeight, thisMaster.descender, thisMaster.ascender, thisMaster.capHeight]
+		try:
+			thisMasterSmallheight = float(thisMaster.customParameters['smallCapHeight'])
+			metricsPosition.append(thisMasterSmallheight)		
+		except:
+			pass
+
 	anchorList = []
 	for thisAnchor in thisLayer.anchors:
-		thisMaster = thisLayer.associatedFontMaster()
-		masterID = thisLayer.associatedMasterId
-		thisMasterSmallheight = float(font.masters[masterID].customParameters['smallCapHeight'])
 		posy = thisAnchor.position.y
-
-		if posy not in [0.0, thisMaster.xHeight, thisMaster.descender, thisMaster.ascender, thisMaster.capHeight, thisMasterSmallheight]:
+		if posy not in metricsPosition:
 			anchorList.append(thisAnchor.name)
 	if len(anchorList) != 0:
-		print thisLayer.parent.name + ":" + "%s" % ", ".join(anchorList)
+		print (thisLayer.parent.name + ":" + "%s" % ", ".join(anchorList))
 		return True
+
+
 
 listOfGlyphs = []
 for thisLayer in selectedLayers:
+		
     if checkAnchors (thisLayer) is True:
     	listOfGlyphs.append(thisLayer.parent.name)
 
 if listOfGlyphs:
-	print "\nGlyphs with off anchors in this master:\n/%s" % "/".join(listOfGlyphs)
+	print ("\nGlyphs with off anchors in this master:\n/%s" % "/".join(listOfGlyphs))
 else:
-	print "\nAll anchors on metric lines."
+	print ("\nAll anchors on metric lines.")
 

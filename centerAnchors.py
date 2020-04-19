@@ -21,9 +21,8 @@ for thisGlyph in allSelectedGlyphs:
     for thisLayer in thisGlyph.layers:
     #Set variables
         masterID = thisLayer.associatedMasterId
-        print masterID
         thisMasterXheight = font.masters[masterID].xHeight
-        thisMasterAngle = thisLayer.glyphMetrics()[5]
+        thisMasterAngle = thisLayer.italicAngle
         width = thisLayer.width
 
         for thisAnchor in thisLayer.anchors:

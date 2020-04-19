@@ -67,7 +67,7 @@ class createOtClass(object):
 		textInName = str( self.w.textInName.get() )
 		gliphstForClass = []
 
-		print textInName
+		print (textInName)
 		for glyph in font.glyphs:
 			if textInName in glyph.name:
 				gliphstForClass.append(glyph.name)
@@ -75,10 +75,12 @@ class createOtClass(object):
 		classCode = ' '.join(gliphstForClass)
 
 		if className in lisOfClassesNames:
-			print "Updating class", className, "with this glyphs:", classCode
+			print ("Updating class:", className, "with this glyphs:", classCode)
 			listOfClasses[ className ].code = classCode
 		else:
 			font.classes.append(GSClass(className, classCode))
+			print ("Created class:", className, "with this glyphs:", classCode)
+
 
 
 

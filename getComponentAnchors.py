@@ -16,7 +16,6 @@ for thisLayer in font.selectedLayers:
 		for referenceAnchor in referenceGlyph.layers[thisLayerID].anchors:
 			
 			newAnchor = GSAnchor.alloc().init()
-			print i
 			newAnchor.name = referenceAnchor.name + "_" + str(i)
 			thisLayer.addAnchor_( newAnchor )
 			newPosition = NSPoint( referenceAnchor.x + offsetX, referenceAnchor.y + offsetY)

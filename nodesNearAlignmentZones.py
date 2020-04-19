@@ -27,7 +27,6 @@ class nearAlignment(object):
 
 		umbral = int(self.w.slider.get())
 		self.w.textBox.set("Threshold: " + str(umbral) + " upm")
-		print umbral
 		def insertArrow(thisLayer, posX, posY, width=30):
 			arrow = GSAnnotation.alloc().initWithElementDict_({ "position":"{"+str(posX)+", "+str(posY)+"}", "type":"Circle", "width":width })
 			thisLayer.addAnnotation_(arrow)
@@ -40,6 +39,7 @@ class nearAlignment(object):
 			return zoneList
 
 		def inZone(thisLayer, masterZones, posX, posY, umbral):
+			print ("asa")
 			for thisZone in masterZones:
 				zoneOrigin = thisZone[0]
 				zoneEnd = thisZone[1]
@@ -68,7 +68,7 @@ class nearAlignment(object):
 						if inZone (thisLayer, masterZones, posX, posY, umbral=0) is True:
 							pass
 						elif inZone (thisLayer, masterZones, posX, posY, umbral) is True:
-							print "no"
 							insertArrow (thisLayer, posX, posY)
+							print ("A")
 						
 nearAlignment()

@@ -36,7 +36,6 @@ class newTabXComponents(object):
 		amoutOfComponents = self.w.textBox.get()
 		for thisLayer in selectedLayers:
 			if len( thisLayer.components ) > int(amoutOfComponents):
-				print thisLayer.components
 				thisGlyph = thisLayer.parent
 				lista.append(thisGlyph.name)
 
@@ -46,7 +45,7 @@ class newTabXComponents(object):
 		else:
 			Glyphs.clearLog()
 			Glyphs.showMacroWindow()
-			print "No glyphs with more than", amoutOfComponents, "components"
+			print ("No glyphs with more than", amoutOfComponents, "components")
 newTabXComponents()
 
 

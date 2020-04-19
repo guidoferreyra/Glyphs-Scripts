@@ -19,16 +19,11 @@ class openGlyphs(object):
 	def __init__(self):
 		
 		self.w = Window((240, 115), "New tab with modified glyphs")		
-		self.w.radioGroup = RadioGroup((10, 10, 140, 40),
-                                ["After", "Before"], isVertical=False)
+		self.w.radioGroup = RadioGroup((10, 10, 140, 40), ["After", "Before"], isVertical=False)
 		self.w.fechaPick = DatePicker((10, 50, -10, 22), timeDisplay=None)
 		self.w.goButton = Button((10, -30, -10, 20), "Open in a new tab", callback=self.buttonCallback)
 		self.w.radioGroup.set(0)
 		self.w.open()
-
-
-	
-
 
 	def buttonCallback(self, sender):
 		Glyphs.showMacroWindow()
@@ -46,11 +41,11 @@ class openGlyphs(object):
 		## #sortedglyphList = sorted(glyphList, key=lambda x: x[1])
 		for glyph in Font.glyphs:	
 			if optionChoice == 0:
-		 		if glyph.lastChange > unixtime:
-		 			glyphList.append(glyph.name)
-		 	else:
-		 		if glyph.lastChange < unixtime:
-		 			glyphList.append(glyph.name)
+				if glyph.lastChange > unixtime:
+					glyphList.append(glyph.name)
+			else:
+				if glyph.lastChange < unixtime:
+					glyphList.append(glyph.name)
 
 		
 		tabString =  "/%s" % "/".join(glyphList) 
@@ -58,6 +53,6 @@ class openGlyphs(object):
 		for glyph in glyphList:
 			thisGlyph = thisFont.glyphs[glyph]
 			lastChange = time.strftime("%d/%m/%y", time.localtime(thisGlyph.lastChange))
-			print thisGlyph.name+": "+lastChange
+			print (thisGlyph.name+": "+lastChange)
 
 openGlyphs()

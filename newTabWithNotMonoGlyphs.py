@@ -28,7 +28,7 @@ class notMono(object):
 		notMonoList = []
 		for layer in selectedLayers:
 			if layer.width != float(customWidth):
-				print layer.parent.name, layer.name, layer.width
+				print (layer.parent.name, layer.name, layer.width)
 				notMonoList.append(layer.parent.name)
 
 		tabString =  "/%s" % "/".join(notMonoList) 

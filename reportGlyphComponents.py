@@ -4,16 +4,13 @@ __doc__="""
 Prints in the console the components used on selecteds glyphs. 
 """
 Glyphs.clearLog()
-
-font = Glyphs.font
+Glyphs.showMacroWindow()
 currentLayer = Glyphs.font.selectedLayers[0]
-print font.familyName, currentLayer.name
-
+print (font.familyName, currentLayer.name)
 
 for thisLayer in Glyphs.font.selectedLayers:
-    print thisLayer.parent.name + ':',
-    for i in thisLayer.components:
-        print i.componentName+',',
-    print
+	glyphComponents = []
+	for i in thisLayer.components:
+		glyphComponents.append(i.name)
 
-Glyphs.showMacroWindow()
+	print (thisLayer.parent.name +": %s" % ", ".join(glyphComponents))

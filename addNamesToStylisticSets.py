@@ -6,7 +6,7 @@ Based on a given list adds descriptive names to stylistic sets
 
 featureName = [
 ("ss01","Long descender g"),
-("ss02","Cursive k "),
+("ss02","Cursive k"),
 ("ss03","Big terminal r"),
 ("ss04","Curved y "),
 ("ss05","Inverted y tail"),
@@ -24,6 +24,6 @@ font = Glyphs.font
 for feature in featureName:
 	try:
 		font.features[feature[0]].notes = "Name: "+feature[1]
-		print feature[0]+" Name: "+feature[1]
+		print (feature[0]+" Name: "+feature[1])
 	except:
 		pass

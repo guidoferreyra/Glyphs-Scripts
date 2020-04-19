@@ -284,4 +284,4 @@ for thisGlyph in allSelectedGlyphs:
 		    selectDict(thisGlyphName, smallDict, smallPosDict, thisLayer)
 
 		else:
-		    print "the /" + thisGlyphName + " glyph is not in the dictionary"
+		    print ("the /" + thisGlyphName + " glyph is not in the dictionary")
