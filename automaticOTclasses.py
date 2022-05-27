@@ -36,13 +36,13 @@ def updateClass(className, text):
 	classCode = ' '.join(glyphsForClass)
 	if len(glyphsForClass) != 0:
 		if className in lisOfClassesNames:
-			print "Updated", className, "with:\n", classCode, "\n"
+			print ("Updated", className, "with:\n", classCode, "\n")
 			listOfClasses[ className ].code = classCode
 		else:
-			print "New", className, "with:\n", classCode, "\n"			
+			print ("New", className, "with:\n", classCode, "\n")
 			font.classes.append(GSClass(className, classCode))
 	else:
-		print "No glyph names with the text: " + text + "\n"
+		print ("No glyph names with the text: " + text + "\n")
 		
 		
 
@@ -56,10 +56,10 @@ def copyAndEdit (newClass, oldClass, oldText, newText):
 	newClassCode = oldClassCode.replace(oldText.replace('"', ''), newText.replace('"', ''))
 	
 	if newClass in lisOfClassesNames:
-		print "Updated", newClass, "with:\n", newClassCode, "\n"
+		print ("Updated", newClass, "with:\n", newClassCode, "\n")
 		listOfClasses[ newClass ].code = newClassCode
 	else:
-		print "New", newClass, "with:\n", newClassCode, "\n"
+		print ("New", newClass, "with:\n", newClassCode, "\n")
 		font.classes.append(GSClass(newClass, newClassCode))
 	
 	

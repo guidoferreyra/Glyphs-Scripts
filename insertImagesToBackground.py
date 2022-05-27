@@ -19,13 +19,12 @@ paths = GetOpenFile(
 )
 
 for imageFilePath in paths:
-	print imageFilePath
 	fileName = split(imageFilePath)
 	glyphName = splitext(fileName[1])[0]
-	
+
 	if glyphName in font.glyphs:
 		thisGlyph = font.glyphs[glyphName]
-	 	for layer in thisGlyph.layers:
+		for layer in thisGlyph.layers:
 			layer.backgroundImage = GSBackgroundImage(imageFilePath)
 			thisGlyph.updateGlyphInfo()
 	else:
@@ -35,4 +34,6 @@ for imageFilePath in paths:
 			layer.backgroundImage = GSBackgroundImage(imageFilePath)
 			thisGlyph.updateGlyphInfo()			
 	
+	print ("Added image to", glyphName, "background. Be sure to have View> Show image activated.")
+
 font.enableUpdateInterface()
