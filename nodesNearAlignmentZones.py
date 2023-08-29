@@ -28,9 +28,14 @@ class nearAlignment(object):
 	def sliderCallback(self, sender):
 		umbral = int(self.w.slider.get())
 		self.updateInfoText(umbral)
+
 		def insertArrow(thisLayer, posX, posY, width=30):
-			arrow = GSAnnotation.alloc().initWithElementDict_({ "position":"{"+str(posX)+", "+str(posY)+"}", "type":"Circle", "width":width })
-			thisLayer.addAnnotation_(arrow)
+			arrow = GSAnnotation()
+			arrow.position = (posX, posY)
+			arrow.type = CIRCLE
+			arrow.width = width
+			thisLayer.annotations.append(arrow)
+			Glyphs.boolDefaults["showAnnotations"] = True
 
 		def zoneList( master ):
 			zoneList = []
