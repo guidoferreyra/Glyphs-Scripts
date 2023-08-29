@@ -37,33 +37,35 @@ class nearAlignment(object):
 			thisLayer.annotations.append(arrow)
 			Glyphs.boolDefaults["showAnnotations"] = True
 
-		def zoneList( master ):
+		def zoneList(master):
 			zoneList = []
 			for z in master.alignmentZones:
-				zoneOrigin, zoneSize = int(z.position), int(z.size)
-				zoneList.append( ( zoneOrigin, zoneOrigin+zoneSize ) )
+				zoneOrigin = int(z.position)
+				zoneEnd = zoneOrigin + int(z.size)
+				if zoneOrigin < zoneEnd:
+					zoneList.append((zoneOrigin, zoneEnd))
+				else:
+					zoneList.append((zoneEnd, zoneOrigin))
 			return zoneList
 
-		def inZone(thisLayer, masterZones, posX, posY, umbral):
-			print ("asa")
+		def nextToZone(thisLayer, masterZones, pos, umbral):
 			for thisZone in masterZones:
 				zoneOrigin = thisZone[0]
 				zoneEnd = thisZone[1]
 
-				if zoneOrigin < zoneEnd:
-					if posY >= zoneOrigin-umbral and posY <= zoneEnd+umbral:
-						return True
-				elif zoneOrigin > zoneEnd:
-					if posY <= zoneOrigin+umbral and posY >= zoneEnd-umbral:
-						return True	
-		
+				if pos >= zoneOrigin - umbral and pos < zoneOrigin:
+					# just below the zone
+					return True
+				if pos > zoneEnd and pos <= zoneEnd + umbral:
+					# just above the zone
+					return True
+
 		for thisLayer in selectedLayers:
 			thisLayer.setAnnotations_(None)
 			masterId = thisLayer.associatedMasterId
 			master = font.masters[masterId]
 
-			masterZones = zoneList( master )
-			
+			masterZones = zoneList(master)
 
 			for thisPath in thisLayer.paths:
 				for thisNode in thisPath.nodes:
@@ -71,10 +73,8 @@ class nearAlignment(object):
 						posY = thisNode.y
 						posX = thisNode.x
 						
-						if inZone (thisLayer, masterZones, posX, posY, umbral=0) is True:
-							pass
-						elif inZone (thisLayer, masterZones, posX, posY, umbral) is True:
+						if nextToZone(thisLayer, masterZones, posY, umbral) is True:
 							insertArrow (thisLayer, posX, posY)
 							print ("A")
-						
+
 nearAlignment()
