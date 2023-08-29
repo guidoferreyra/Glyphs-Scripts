@@ -4,9 +4,6 @@ __doc__="""
 (UI) The script searches for nodes near the alignment zones using an slider as a threshold in units.
 """
 from vanilla import *
-font = Glyphs.font
-selectedLayers = font.selectedLayers
-
 
 class nearAlignment(object):
 
@@ -59,6 +56,9 @@ class nearAlignment(object):
 				if pos > zoneEnd and pos <= zoneEnd + umbral:
 					# just above the zone
 					return True
+
+		font = Glyphs.font
+		selectedLayers = font.selectedLayers
 
 		for thisLayer in selectedLayers:
 			thisLayer.setAnnotations_(None)
