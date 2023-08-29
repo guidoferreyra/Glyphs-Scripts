@@ -11,22 +11,23 @@ selectedLayers = font.selectedLayers
 class nearAlignment(object):
 
 	def __init__(self):
-		
-		umbral = 0
-		infoText = "Threshold: "+ str(umbral) + " upm"
+
 		self.w = Window((180, 70), "Check Nodes")
 		self.w.slider = Slider((10, 10, -10, 23),
-                            tickMarkCount=10,
-                            value=0,
-                            minValue=0, maxValue=40,
-                            callback=self.sliderCallback)
-		self.w.textBox = TextBox((10, 40, -10, 17), infoText)
+			tickMarkCount=10,
+			value=0, minValue=0, maxValue=40,
+			callback=self.sliderCallback)
+		self.w.textBox = TextBox((10, 40, -10, 17))
+		self.updateInfoText()
 		self.w.open()
-
+	
+	def updateInfoText(self, umbral=0):
+		infoText = "Threshold: %d u" % int(umbral)
+		self.w.textBox.set(infoText)
+	
 	def sliderCallback(self, sender):
-
 		umbral = int(self.w.slider.get())
-		self.w.textBox.set("Threshold: " + str(umbral) + " upm")
+		self.updateInfoText(umbral)
 		def insertArrow(thisLayer, posX, posY, width=30):
 			arrow = GSAnnotation.alloc().initWithElementDict_({ "position":"{"+str(posX)+", "+str(posY)+"}", "type":"Circle", "width":width })
 			thisLayer.addAnnotation_(arrow)
